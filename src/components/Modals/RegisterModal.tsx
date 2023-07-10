@@ -13,6 +13,8 @@ import Modal from './Modal';
 // import Input from '../inputs/Input';
 // import Heading from '../Heading';
 import Button from '../Buttons/Button';
+import RegisterForm from '../Forms/RegisterForm';
+import Heading from '../Heading';
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -56,33 +58,8 @@ const RegisterModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      BODY CONTENT
-      {/* <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
-      <Input
-        id="email"
-        label="Email"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
-      <Input
-        id="name"
-        label="Name"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
-      <Input
-        id="password"
-        label="Password"
-        type="password"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      /> */}
+      <Heading title="Welcome to Rocklog" subtitle="Create an account!" />
+      <RegisterForm />
     </div>
   );
 
@@ -132,7 +109,7 @@ const RegisterModal = () => {
       title="Register"
       actionLabel="Continue"
       onClose={registerModal.onClose}
-      onSubmit={() => handleSubmit(onSubmit)}
+      // onSubmit={() => handleSubmit(onSubmit)}
       body={bodyContent}
       footer={footerContent}
     />

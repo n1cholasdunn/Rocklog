@@ -11,6 +11,9 @@ import useRegisterModal from '~/hooks/useRegisterModal';
 import useLoginModal from '~/hooks/useLoginModal';
 
 import Modal from './Modal';
+import Heading from '../Heading';
+import RegisterForm from '../Forms/RegisterForm';
+import LoginForm from '../Forms/LoginForm';
 // import Input from '../inputs/Input';
 // import Heading from '../Heading';
 
@@ -31,6 +34,26 @@ const LoginModal = () => {
     },
   });
 
+  // const onSubmit: SubmitHandler<FieldValues> = data => {
+  //   setIsLoading(true);
+
+  //   signIn('credentials', {
+  //     ...data,
+  //     redirect: false,
+  //   }).then(callback => {
+  //     setIsLoading(false);
+
+  //     if (callback?.ok) {
+  //       toast.success('Logged in');
+  //       router.refresh();
+  //       loginModal.onClose();
+  //     }
+
+  //     if (callback?.error) {
+  //       toast.error(callback.error);
+  //     }
+  //   });
+  // };
   const onToggle = useCallback(() => {
     loginModal.onClose();
     registerModal.onOpen();
@@ -38,7 +61,8 @@ const LoginModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <p className="text-4xl font-bold text-red-700">BODY CONTENT</p>
+      <Heading title="Welcome back" subtitle="Login to your account!" />
+      <LoginForm />
     </div>
   );
 
@@ -61,7 +85,7 @@ const LoginModal = () => {
         className="
       mt-4 text-center font-light text-neutral-500">
         <p>
-          First time using Airbnb?
+          First time using Rocklog?
           <span
             onClick={onToggle}
             className="

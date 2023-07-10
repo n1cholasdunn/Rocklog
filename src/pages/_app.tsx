@@ -5,6 +5,7 @@ import {api} from '~/utils/api';
 import '~/styles/globals.css';
 import Layout from '~/components/Layout';
 import LoginModal from '~/components/Modals/LoginModal';
+import RegisterModal from '~/components/Modals/RegisterModal';
 
 const MyApp: AppType<{session: Session | null}> = ({
   Component,
@@ -17,7 +18,7 @@ const MyApp: AppType<{session: Session | null}> = ({
         <div></div>
         <div>
           <LoginModal />
-          {/* <RegisterModal /> */}
+          <RegisterModal />
         </div>
       </Layout>
     </SessionProvider>
