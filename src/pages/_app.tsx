@@ -3,6 +3,8 @@ import {SessionProvider} from 'next-auth/react';
 import {type AppType} from 'next/app';
 import {api} from '~/utils/api';
 import '~/styles/globals.css';
+import Layout from '~/components/Layout';
+import LoginModal from '~/components/Modals/LoginModal';
 
 const MyApp: AppType<{session: Session | null}> = ({
   Component,
@@ -11,6 +13,13 @@ const MyApp: AppType<{session: Session | null}> = ({
   return (
     <SessionProvider session={session}>
       <Component {...pageProps} />
+      <Layout>
+        <div></div>
+        <div>
+          <LoginModal />
+          {/* <RegisterModal /> */}
+        </div>
+      </Layout>
     </SessionProvider>
   );
 };

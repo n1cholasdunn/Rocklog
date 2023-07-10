@@ -23,7 +23,8 @@ const Button: React.FC<Props> = ({
       onClick={onClick}
       disabled={disabled}
       className={`
-    relative w-full
+    relative my-1
+    w-full
     rounded-lg
     transition
     hover:opacity-80
@@ -43,7 +44,8 @@ const Button: React.FC<Props> = ({
           className="
         absolute
         left-4
-        top-3"
+        top-3
+        "
         />
       )}
       {label}

@@ -1,10 +1,10 @@
-import React from 'react';
-import Header from './Header';
+import NavBar from './NavBar/NavBar';
 
-const Layout = () => {
+const Layout = ({children}: {children: React.ReactNode}) => {
   return (
-    <div className="navbar">
-      <Header />
+    <div>
+      <NavBar />
+      {children}
     </div>
   );
 };
