@@ -13,6 +13,14 @@ const config = {
         protocol: 'https',
         hostname: 'i.postimg.cc',
       },
+      {
+        protocol: 'https',
+        hostname: 'postimg.cc',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
     ],
     minimumCacheTTL: 15000000,
   },

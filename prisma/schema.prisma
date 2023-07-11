@@ -57,6 +57,7 @@ model User {
     accounts      Account[]
     sessions      Session[]
     posts         Post[]
+    // images        Image[]
 }
 
 model VerificationToken {
@@ -71,11 +72,25 @@ model Post {
   id          String   @id @default(cuid())
   createdAt   DateTime @default(now())
   description String   @db.VarChar(750)
-  author      User     @relation(fields: [authorId], references: [id])
+  user      User     @relation(fields: [authorId], references: [id])
   authorId    String
   name        String
   grade       String
   climbType   String
   rating      Float
   danger      Boolean?
+//   images      Image[]
 }
+
+// model Image {
+//   id       String @id @default(cuid())
+//   publicId String @unique
+//   format   String
+//   version  String
+//   postId   String
+//   userId   String
+//   user     User   @relation(fields: [userId], references: [id])
+//   post     Post   @relation(fields: [postId], references: [id])
+
+//   @@index([postId])
+// }

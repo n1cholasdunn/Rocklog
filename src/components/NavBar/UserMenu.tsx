@@ -1,16 +1,14 @@
-'use client';
-
 import {useCallback, useState} from 'react';
 import {AiOutlineMenu} from 'react-icons/ai';
 import {useRouter} from 'next/navigation';
-import {signIn, signOut, useSession} from 'next-auth/react';
+import {signOut} from 'next-auth/react';
 import useLoginModal from '~/hooks/useLoginModal';
 import useRegisterModal from '~/hooks/useRegisterModal';
-// import useRentModal from '@/app/hooks/useRentModal';
-import {SafeUser} from '~/types';
+import {type SafeUser} from '~/types';
 
 import UserMenuItem from './UserMenuItem';
 import Avatar from '../Avatar';
+import usePostModal from '~/hooks/usePostModal';
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -19,6 +17,7 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
   const router = useRouter();
 
+  const postModal = usePostModal();
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
 
@@ -72,6 +71,10 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
             {currentUser ? (
               <>
                 <UserMenuItem
+                  label="Create a Post"
+                  onClick={postModal.onOpen}
+                />
+                <UserMenuItem
                   label="My posts"
                   onClick={() => router.push('/posts')}
                 />
@@ -89,6 +92,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
                 />
 
                 <hr />
+
                 <UserMenuItem label="Logout" onClick={() => void signOut()} />
               </>
             ) : (

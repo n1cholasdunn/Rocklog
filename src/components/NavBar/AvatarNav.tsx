@@ -1,7 +1,7 @@
 import * as Avatar from '@radix-ui/react-avatar';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import {signIn, signOut, useSession} from 'next-auth/react';
-import Button from '../Buttons/Button';
+import Button from '../buttons/Button';
 import {FcGoogle} from 'react-icons/fc';
 import {AiFillGithub} from 'react-icons/ai';
 import {FaSignOutAlt} from 'react-icons/fa';

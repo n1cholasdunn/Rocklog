@@ -1,15 +1,15 @@
 import {useCallback, useEffect, useState} from 'react';
 import {IoMdClose} from 'react-icons/io';
-import Button from '../Buttons/Button';
+import Button from '../buttons/Button';
 
 interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
-  // onSubmit: () => void;
+  onSubmit?: () => void;
   title?: string;
   body?: React.ReactElement;
   footer?: React.ReactElement;
-  actionLabel: string;
+  actionLabel?: string;
   disabled?: boolean;
   secondaryAction?: () => void;
   secondaryActionLabel?: string;
@@ -18,7 +18,7 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
-  // onSubmit,
+  onSubmit,
   title,
   body,
   actionLabel,
@@ -144,9 +144,9 @@ const Modal: React.FC<ModalProps> = ({
                 </button>
                 <div className="text-lg font-semibold">{title}</div>
               </div>
-              {/*body*/}
+              {/*BODY*/}
               <div className="relative flex-auto p-6">{body}</div>
-              {/*footer*/}
+              {/*FOOTER*/}
               <div className="flex flex-col gap-2 p-6">
                 <div
                   className="
@@ -167,7 +167,7 @@ const Modal: React.FC<ModalProps> = ({
                   {/* <Button
                     disabled={disabled}
                     label={actionLabel}
-                    // onClick={handleSubmit}
+                    onClick={handleSubmit}
                   /> */}
                 </div>
                 {footer}

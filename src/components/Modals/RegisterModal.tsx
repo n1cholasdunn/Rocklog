@@ -4,16 +4,12 @@ import {signIn} from 'next-auth/react';
 import {FcGoogle} from 'react-icons/fc';
 import {useCallback, useState} from 'react';
 import {toast} from 'react-hot-toast';
-import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
-
+import {type FieldValues, type SubmitHandler, useForm} from 'react-hook-form';
 import useLoginModal from '~/hooks/useLoginModal';
 import useRegisterModal from '~/hooks/useRegisterModal';
-
 import Modal from './Modal';
-// import Input from '../inputs/Input';
-// import Heading from '../Heading';
-import Button from '../Buttons/Button';
-import RegisterForm from '../Forms/RegisterForm';
+import Button from '../buttons/Button';
+import RegisterForm from '../forms/RegisterForm';
 import Heading from '../Heading';
 
 const RegisterModal = () => {

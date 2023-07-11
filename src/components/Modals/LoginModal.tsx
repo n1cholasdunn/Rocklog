@@ -1,21 +1,15 @@
 import {useCallback, useState} from 'react';
-import {toast} from 'react-hot-toast';
 import {signIn} from 'next-auth/react';
-import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
+import {type FieldValues, useForm} from 'react-hook-form';
 import {FcGoogle} from 'react-icons/fc';
 import {AiFillGithub} from 'react-icons/ai';
 import {useRouter} from 'next/navigation';
-import Button from '../Buttons/Button';
-
+import Button from '../buttons/Button';
 import useRegisterModal from '~/hooks/useRegisterModal';
 import useLoginModal from '~/hooks/useLoginModal';
-
 import Modal from './Modal';
 import Heading from '../Heading';
-import RegisterForm from '../Forms/RegisterForm';
-import LoginForm from '../Forms/LoginForm';
-// import Input from '../inputs/Input';
-// import Heading from '../Heading';
+import LoginForm from '../forms/LoginForm';
 
 const LoginModal = () => {
   const router = useRouter();
@@ -105,7 +99,6 @@ const LoginModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={loginModal.isOpen}
-      // isOpen={loginModal.isOpen}
       title="Login"
       actionLabel="Continue"
       onClose={loginModal.onClose}

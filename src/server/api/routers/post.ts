@@ -4,7 +4,7 @@ import {
   publicProcedure,
   protectedProcedure,
 } from '~/server/api/trpc';
-import {createPostSchema} from '~/server/helpers/post-schema';
+import {createPostSchema} from '~/helpers/post-schema';
 
 export const postRouter = createTRPCRouter({
   //posts to populate homepage
