@@ -9,8 +9,8 @@ const Logo = () => {
       onClick={() => router.push('/')}
       className="hidden cursor-pointer md:block"
       src="https://i.postimg.cc/44WH04kB/Screenshot-2023-06-13-at-5-45-40-PM.png"
-      height="100"
-      width="100"
+      height="80"
+      width="80"
       alt="Logo"
     />
   );

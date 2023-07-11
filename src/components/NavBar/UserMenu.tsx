@@ -34,11 +34,14 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
           onClick={toggleOpen}
           className="
           flex
+          h-14
+          w-36
           cursor-pointer
           flex-row
           items-center
+          justify-evenly
           gap-3
-          rounded-full
+          rounded-md
           border-[1px]
           border-neutral-200
           p-4
@@ -47,7 +50,11 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
           md:px-2
           md:py-1
           ">
-          <AiOutlineMenu />
+          <div className="flex content-between">
+            <div>
+              <AiOutlineMenu size={20} />
+            </div>
+          </div>
           <div className="hidden md:block">
             <Avatar src={currentUser?.image} />
           </div>
@@ -57,23 +64,33 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
         <div
           className="
             absolute
-            right-0
-            top-12
-            w-[40vw]
+           left-0
+            top-[3.6rem]
+            w-full
+            overflow-hidden
+            rounded-md
+            bg-white
+            text-sm
+            shadow-md
+
+          ">
+          {/* <div
+          className="
+            absolute
+           left-0
+            top-14
+            w-full
             overflow-hidden
             rounded-xl
             bg-white
             text-sm
             shadow-md
             md:w-3/4
-          ">
-          <div className="flex cursor-pointer flex-col">
+          "> */}
+          <div className="flex w-36 cursor-pointer flex-col">
             {currentUser ? (
               <>
-                <UserMenuItem
-                  label="Create a Post"
-                  onClick={postModal.onOpen}
-                />
+                <UserMenuItem label="Create Post" onClick={postModal.onOpen} />
                 <UserMenuItem
                   label="My posts"
                   onClick={() => router.push('/posts')}
@@ -83,16 +100,13 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
                   onClick={() => router.push('/favorites')}
                 />
                 <UserMenuItem
-                  label="My Dream Destinations"
+                  label="My Destinations"
                   onClick={() => router.push('/destinations')}
                 />
                 <UserMenuItem
                   label="My Media"
                   onClick={() => router.push('/media')}
                 />
-
-                <hr />
-
                 <UserMenuItem label="Logout" onClick={() => void signOut()} />
               </>
             ) : (
