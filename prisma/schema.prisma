@@ -73,6 +73,7 @@ model Post {
   createdAt   DateTime @default(now())
   description String   @db.VarChar(750)
   user      User     @relation(fields: [authorId], references: [id])
+  author String
   authorId    String
   name        String
   grade       String

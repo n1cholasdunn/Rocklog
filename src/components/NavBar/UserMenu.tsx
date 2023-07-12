@@ -90,7 +90,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
           <div className="flex w-36 cursor-pointer flex-col">
             {currentUser ? (
               <>
-                <UserMenuItem label="Create Post" onClick={postModal.onOpen} />
+                <UserMenuItem label="New Post" onClick={postModal.onOpen} />
                 <UserMenuItem
                   label="My posts"
                   onClick={() => router.push('/posts')}
