@@ -14,7 +14,7 @@ const UserMenuItem: React.FC<Props> = ({onClick, label}) => {
         font-semibold
         shadow
         transition
-        hover:bg-neutral-100
+        hover:bg-zinc-500
       ">
       {label}
     </div>

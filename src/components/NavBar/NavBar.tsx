@@ -8,10 +8,11 @@ const NavBar = () => {
   const {data: sessionData} = useSession();
   const currentUser = sessionData?.user;
   return (
-    <div className="  mb-5 w-full bg-white shadow-sm">
+    <div className="  mb-5 w-full  shadow-sm ">
       <div
         className="
           border-b-[1px]
+          border-zinc-400
           py-3
         ">
         <Container>

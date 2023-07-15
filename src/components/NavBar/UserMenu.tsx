@@ -43,7 +43,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
           gap-3
           rounded-md
           border-[1px]
-          border-neutral-200
+          border-zinc-400
           p-4
           transition
           hover:shadow-md
@@ -52,7 +52,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
           ">
           <div className="flex content-between">
             <div>
-              <AiOutlineMenu size={20} />
+              <AiOutlineMenu size={20} color="#d4d4d8" />
             </div>
           </div>
           <div className="hidden md:block">
@@ -69,8 +69,9 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
             w-full
             overflow-hidden
             rounded-md
-            bg-white
+            bg-zinc-300
             text-sm
+            text-zinc-800
             shadow-md
 
           ">

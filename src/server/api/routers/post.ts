@@ -1,4 +1,3 @@
-import {z} from 'zod';
 import {
   createTRPCRouter,
   publicProcedure,
@@ -12,6 +11,11 @@ export const postRouter = createTRPCRouter({
     return ctx.prisma.post.findMany({
       take: 20,
       orderBy: [{createdAt: 'desc'}],
+      include: {
+        user: {
+          select: {image: true},
+        },
+      },
     });
   }),
 
@@ -26,6 +30,7 @@ export const postRouter = createTRPCRouter({
   create: protectedProcedure
     .input(createPostSchema)
     .mutation(({ctx, input}) => {
+      console.log(ctx);
       const authorId = ctx.session.user.id;
 
       return ctx.prisma.post.create({

@@ -13,7 +13,7 @@ type Props = {
 
 const CreatePostForm = ({setIsLoading}: Props) => {
   const {data, status: userLoaded} = useSession();
-  const user = data?.user;
+  // const user = data?.user;
 
   const ctx = api.useContext();
 
@@ -34,12 +34,19 @@ const CreatePostForm = ({setIsLoading}: Props) => {
     },
   });
 
-  const onSubmit = (data: PostData) => {
-    setIsLoading(true);
-    console.log(data);
-    mutate(data);
-    reset();
-    setIsLoading(false);
+  const onSubmit = (postsData: PostData) => {
+    try {
+      setIsLoading(true);
+      // const authorPic = data?.user.image as string;
+      // console.log(authorPic);
+      // postsData.authorImg = authorPic;
+      // console.log(postsData);
+      mutate(postsData);
+      reset();
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
   if (userLoaded === 'loading') return <Loading />;
 

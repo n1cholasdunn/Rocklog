@@ -4,15 +4,16 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Link from 'next/link';
 import Image from 'next/image';
-import {useSession} from 'next-auth/react';
+import {api} from '~/utils/api';
+import {prisma} from '~/server/db';
 
 dayjs.extend(relativeTime);
 
 type PostFromUser = RouterOutputs['post']['getAll'][number];
 
 const PostView = (props: PostFromUser) => {
-  const userImage = useSession().data?.user.image as string;
-
+  //! Need to change to getting from DB
+  // const userImage = useSession().data?.user.image as string;
   const {
     id,
     createdAt,
@@ -23,22 +24,47 @@ const PostView = (props: PostFromUser) => {
     climbType,
     rating,
     danger,
+    user,
   } = props;
+
+  const userImage = user.image as string;
+
   return (
     <>
       <div key={id} className="flex w-3/5 border-b border-zinc-400 p-6">
-        <div className="mr-5">
-          <Image src={userImage} alt="user image" width={50} height={50} />
-        </div>
-        <div>
+        <Link href={`/${authorId}`}>
+          <div className="mr-5">
+            <Image
+              src={userImage}
+              alt="user image"
+              width={50}
+              height={50}
+              className="rounded-lg"
+            />
+          </div>
+        </Link>
+        <div className="text-zinc-300">
           <Link href={`/post/${id}`}>
             <h3>
               <ul>
-                <li>{name}</li>
-                <li>{climbType}</li>
-                <li>{grade}</li>
-                <li>{rating}</li>
-                {danger && <li>Danger Warning = {danger}</li>}
+                <li>
+                  <p>Name: {name}</p>
+                </li>
+                <li>
+                  <p>Discipline: {climbType}</p>
+                </li>
+                <li>
+                  <p>Grade: {grade}</p>
+                </li>
+                <li>
+                  <p>Rating: {rating}</p>
+                </li>
+                {danger && (
+                  <li>
+                    {' '}
+                    <p>Danger Warning = {danger}</p>
+                  </li>
+                )}
               </ul>
             </h3>
             <p>{description}</p>
@@ -46,9 +72,6 @@ const PostView = (props: PostFromUser) => {
           <h4>
             <ul>
               <li>{`posted at: ${dayjs(createdAt).fromNow()}`}</li>
-              <Link href={`/${authorId}`}>
-                <li>{`posted by:${authorId}`}</li>
-              </Link>
             </ul>
           </h4>
         </div>
