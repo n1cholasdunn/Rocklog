@@ -9,9 +9,9 @@ import {prisma} from '~/server/db';
 
 dayjs.extend(relativeTime);
 
-type PostFromUser = RouterOutputs['post']['getAll'][number];
+type singlePostProps = RouterOutputs['post']['getOne'];
 
-const PostView = (props: PostFromUser) => {
+const PostView = (props: singlePostProps) => {
   //! Need to change to getting from DB
   // const userImage = useSession().data?.user.image as string;
   const {
