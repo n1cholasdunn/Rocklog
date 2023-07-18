@@ -16,6 +16,7 @@ export const createPostSchema = z.object({
     .min(0)
     .max(5),
   danger: z.optional(z.boolean()),
+  imageURL: z.optional(z.string()),
 });
 
 export type PostData = z.infer<typeof createPostSchema>;

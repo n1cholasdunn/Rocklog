@@ -9,17 +9,16 @@ const PostModal = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const bodyContent = (
-    <div className="flex flex-col gap-4">
-      <Heading title="New Post" />
+    <div className="flex flex-col gap-2">
+      {/* <Heading title="New Post" /> */}
       <CreatePostForm setIsLoading={setIsLoading} />
     </div>
   );
 
   const footerContent = (
-    <div className="mt-3 flex flex-col gap-4">
+    <div className="mt-1 flex flex-col gap-1">
       <div
         className="
-          mt-4
           text-center
           font-light
           text-neutral-500

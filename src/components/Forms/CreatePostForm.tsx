@@ -6,7 +6,7 @@ import type {PostData} from '~/helpers/post-schema';
 import Loading from '../Loading';
 import climbCategories from '~/helpers/climb-categories';
 import {useSession} from 'next-auth/react';
-import {UploadButton} from '~/utils/uploadthing';
+import {UploadButton, UploadDropzone} from '~/utils/uploadthing';
 // You need to import our styles for the button to look right. Best to import in the root /_app.tsx but this is fine
 import '@uploadthing/react/styles.css';
 
@@ -60,14 +60,14 @@ const CreatePostForm = ({setIsLoading}: Props) => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col justify-items-center">
         <div className="px-1">
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between">
             <label className="bg-zinc-600 text-zinc-200" htmlFor="category">
               Type of Climb:
             </label>
             <select
               {...register('climbType')}
               id="category"
-              className="border-none bg-zinc-600  text-zinc-200"
+              className="my-1 h-9 w-44 rounded border bg-zinc-600  p-2 text-zinc-200 outline-none"
               placeholder="Choose">
               <option value="">Choose One</option>
               {climbCategories.map(category => (
@@ -77,7 +77,7 @@ const CreatePostForm = ({setIsLoading}: Props) => {
               ))}
             </select>
           </div>
-          <div className="flex justify-between">
+          <div className="my-2 flex flex-col justify-between">
             <label className="text-zinc-200" htmlFor="name">
               Name:{' '}
             </label>
@@ -85,11 +85,11 @@ const CreatePostForm = ({setIsLoading}: Props) => {
               {...register('name')}
               id="name"
               type="text"
-              className="bg-zinc-600 text-zinc-200"
+              className="my-1 h-9 rounded border bg-zinc-600 p-2 text-zinc-200 outline-none"
             />
             {errors.name && <p>{errors.name.message}</p>}
           </div>
-          <div className="flex justify-between">
+          <div className="my-2 flex flex-col justify-between">
             <label className="text-zinc-200" htmlFor="grade">
               Grade:{' '}
             </label>
@@ -97,36 +97,43 @@ const CreatePostForm = ({setIsLoading}: Props) => {
               {...register('grade')}
               id="grade"
               type="text"
-              className=" bg-zinc-600 text-zinc-200"
+              className="my-1 h-9  rounded border bg-zinc-600 p-2 text-zinc-200 outline-none"
             />
             {errors.grade && <p>{errors.grade.message}</p>}
           </div>
-          <div className="flex justify-between ">
+          <div className="my-2 flex flex-col justify-between ">
             <label className="text-zinc-200" htmlFor="rating">
-              Rating:{' '}
+              Rating (0-5):{' '}
             </label>
             <input
               {...register('rating', {valueAsNumber: true})}
               id="rating"
               type="number"
-              className="bg-zinc-600 text-zinc-200"
+              className="my-1 h-9 rounded border bg-zinc-600 p-2 text-zinc-200 outline-none"
             />
             {errors.rating && <p>{errors.rating.message}</p>}
           </div>
-          <div className="flex justify-between">
+          <div className="my-2 flex flex-col justify-between">
             <label className="text-zinc-200" htmlFor="description">
               Description:{' '}
             </label>
-            <input
+            <textarea
+              {...register('description')}
+              name="description"
+              id="description"
+              cols={30}
+              rows={5}
+              className="my-1  rounded border bg-zinc-600 p-2 text-zinc-200 outline-none"></textarea>
+            {/* <input
               {...register('description')}
               id="description"
               type="text"
-              className="bg-zinc-600 text-zinc-200"
-            />
+              className="my-1 h-40 rounded border bg-zinc-600 p-2 text-zinc-200 outline-none"
+            /> */}
             {errors.description && <p>{errors.description.message}</p>}
           </div>
           <div>
-            <UploadButton
+            <UploadDropzone
               endpoint="imageUploader"
               onClientUploadComplete={res => {
                 // Do something with the response
@@ -138,9 +145,21 @@ const CreatePostForm = ({setIsLoading}: Props) => {
                 alert(`ERROR! ${error.message}`);
               }}
             />
+            {/* <UploadButton
+              endpoint="imageUploader"
+              onClientUploadComplete={res => {
+                // Do something with the response
+                console.log('Files: ', res);
+                alert('Upload Completed');
+              }}
+              onUploadError={(error: Error) => {
+                // Do something with the error.
+                alert(`ERROR! ${error.message}`);
+              }}
+            /> */}
           </div>
         </div>
-        <button className="mt-4 rounded-md bg-red-400 p-5">
+        <button className="mt-1 rounded-md bg-zinc-300 p-5">
           Post Your Climb!
         </button>
       </form>
