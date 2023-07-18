@@ -1,11 +1,8 @@
-import React from 'react';
 import type {RouterOutputs} from '~/utils/api';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Link from 'next/link';
 import Image from 'next/image';
-import {api} from '~/utils/api';
-import {prisma} from '~/server/db';
 
 dayjs.extend(relativeTime);
 
@@ -31,33 +28,27 @@ const PostView = (props: singlePostProps) => {
 
   return (
     <>
-      <div key={id} className="flex w-3/5 border-b border-zinc-400 p-6">
+      <div key={id} className="flex w-full  justify-center p-3">
         <Link href={`/user/${authorId}`}>
-          <div className="mr-5">
-            <Image
-              src={userImage}
-              alt="user image"
-              width={50}
-              height={50}
-              className="rounded-lg"
-            />
+          <div className="mr-5 flex items-center ">
+            <Image src={userImage} alt="user image" width={100} height={100} />
           </div>
         </Link>
         <div className="text-zinc-300">
           <Link href={`/posts/${id}`}>
             <h3>
-              <ul>
+              <ul className="mb-3 ">
                 <li>
-                  <p>Name: {name}</p>
+                  <p className="mb-1 text-8xl font-semibold">{name}</p>
                 </li>
                 <li>
-                  <p>Discipline: {climbType}</p>
+                  <p className="pl-4 text-lg">Discipline: {climbType}</p>
                 </li>
                 <li>
-                  <p>Grade: {grade}</p>
+                  <p className="pl-4 text-lg">Grade: {grade}</p>
                 </li>
                 <li>
-                  <p>Rating: {rating}</p>
+                  <p className="pl-4 text-lg">Rating: {rating}</p>
                 </li>
                 {danger && (
                   <li>
@@ -67,11 +58,15 @@ const PostView = (props: singlePostProps) => {
                 )}
               </ul>
             </h3>
-            <p>{description}</p>
+            <p className="mb-2 text-2xl">{description}</p>
           </Link>
           <h4>
             <ul>
-              <li>{`posted at: ${dayjs(createdAt).fromNow()}`}</li>
+              <li>
+                <p className="text-sm">{`posted at: ${dayjs(
+                  createdAt
+                ).fromNow()}`}</p>
+              </li>
             </ul>
           </h4>
         </div>

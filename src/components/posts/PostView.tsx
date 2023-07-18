@@ -1,11 +1,8 @@
-import React from 'react';
 import type {RouterOutputs} from '~/utils/api';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Link from 'next/link';
 import Image from 'next/image';
-import {api} from '~/utils/api';
-import {prisma} from '~/server/db';
 
 dayjs.extend(relativeTime);
 
@@ -31,7 +28,7 @@ const PostView = (props: PostFromUser) => {
 
   return (
     <>
-      <div key={id} className="flex w-3/5 border-b border-zinc-400 p-6">
+      <div key={id} className="flex w-3/5 border-b border-zinc-400 p-3">
         <Link href={`/user/${authorId}`}>
           <div className="mr-5">
             <Image
@@ -48,30 +45,34 @@ const PostView = (props: PostFromUser) => {
             <h3>
               <ul>
                 <li>
-                  <p>Name: {name}</p>
+                  <p className="text-3xl font-semibold">{name}</p>
                 </li>
                 <li>
-                  <p>Discipline: {climbType}</p>
+                  <p className="text-sm">Discipline: {climbType}</p>
                 </li>
                 <li>
-                  <p>Grade: {grade}</p>
+                  <p className="text-sm">Grade: {grade}</p>
                 </li>
                 <li>
-                  <p>Rating: {rating}</p>
+                  <p className="text-sm">Rating: {rating}</p>
                 </li>
                 {danger && (
                   <li>
                     {' '}
-                    <p>Danger Warning = {danger}</p>
+                    <p className="text-sm">Danger Warning = {danger}</p>
                   </li>
                 )}
               </ul>
             </h3>
-            <p>{description}</p>
+            <p className="py-3">{description}</p>
           </Link>
           <h4>
             <ul>
-              <li>{`posted at: ${dayjs(createdAt).fromNow()}`}</li>
+              <li>
+                <p className="text-xs">{`posted at: ${dayjs(
+                  createdAt
+                ).fromNow()}`}</p>
+              </li>
             </ul>
           </h4>
         </div>

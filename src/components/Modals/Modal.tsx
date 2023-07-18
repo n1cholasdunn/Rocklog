@@ -112,7 +112,7 @@ const Modal: React.FC<ModalProps> = ({
               flex-col
               rounded-lg
               border-0
-              bg-white
+              bg-zinc-600
               shadow-lg
               outline-none
               focus:outline-none
@@ -128,6 +128,7 @@ const Modal: React.FC<ModalProps> = ({
                 justify-center
                 rounded-t
                 border-b-[1px]
+                border-zinc-900
                 p-6
                 ">
                 <button
@@ -142,7 +143,9 @@ const Modal: React.FC<ModalProps> = ({
                   onClick={handleClose}>
                   <IoMdClose size={18} />
                 </button>
-                <div className="text-lg font-semibold">{title}</div>
+                <div className="text-lg font-semibold text-zinc-200">
+                  {title}
+                </div>
               </div>
               {/*BODY*/}
               <div className="relative flex-auto p-6">{body}</div>

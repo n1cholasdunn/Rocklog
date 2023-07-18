@@ -6,6 +6,9 @@ import type {PostData} from '~/helpers/post-schema';
 import Loading from '../Loading';
 import climbCategories from '~/helpers/climb-categories';
 import {useSession} from 'next-auth/react';
+import {UploadButton} from '~/utils/uploadthing';
+// You need to import our styles for the button to look right. Best to import in the root /_app.tsx but this is fine
+import '@uploadthing/react/styles.css';
 
 type Props = {
   setIsLoading: (boolean: boolean) => void;
@@ -58,11 +61,13 @@ const CreatePostForm = ({setIsLoading}: Props) => {
         className="flex flex-col justify-items-center">
         <div className="px-1">
           <div className="flex justify-between">
-            <label htmlFor="category">Type of Climb:</label>
+            <label className="bg-zinc-600 text-zinc-200" htmlFor="category">
+              Type of Climb:
+            </label>
             <select
               {...register('climbType')}
               id="category"
-              className="text-black "
+              className="border-none bg-zinc-600  text-zinc-200"
               placeholder="Choose">
               <option value="">Choose One</option>
               {climbCategories.map(category => (
@@ -73,44 +78,66 @@ const CreatePostForm = ({setIsLoading}: Props) => {
             </select>
           </div>
           <div className="flex justify-between">
-            <label htmlFor="name">name</label>
+            <label className="text-zinc-200" htmlFor="name">
+              Name:{' '}
+            </label>
             <input
               {...register('name')}
               id="name"
               type="text"
-              className="text-black"
+              className="bg-zinc-600 text-zinc-200"
             />
             {errors.name && <p>{errors.name.message}</p>}
           </div>
           <div className="flex justify-between">
-            <label htmlFor="grade">grade</label>
+            <label className="text-zinc-200" htmlFor="grade">
+              Grade:{' '}
+            </label>
             <input
               {...register('grade')}
               id="grade"
               type="text"
-              className="text-black"
+              className=" bg-zinc-600 text-zinc-200"
             />
             {errors.grade && <p>{errors.grade.message}</p>}
           </div>
           <div className="flex justify-between ">
-            <label htmlFor="rating">rating</label>
+            <label className="text-zinc-200" htmlFor="rating">
+              Rating:{' '}
+            </label>
             <input
               {...register('rating', {valueAsNumber: true})}
               id="rating"
               type="number"
-              className="text-black"
+              className="bg-zinc-600 text-zinc-200"
             />
             {errors.rating && <p>{errors.rating.message}</p>}
           </div>
           <div className="flex justify-between">
-            <label htmlFor="description">description</label>
+            <label className="text-zinc-200" htmlFor="description">
+              Description:{' '}
+            </label>
             <input
               {...register('description')}
               id="description"
               type="text"
-              className="text-black"
+              className="bg-zinc-600 text-zinc-200"
             />
             {errors.description && <p>{errors.description.message}</p>}
+          </div>
+          <div>
+            <UploadButton
+              endpoint="imageUploader"
+              onClientUploadComplete={res => {
+                // Do something with the response
+                console.log('Files: ', res);
+                alert('Upload Completed');
+              }}
+              onUploadError={(error: Error) => {
+                // Do something with the error.
+                alert(`ERROR! ${error.message}`);
+              }}
+            />
           </div>
         </div>
         <button className="mt-4 rounded-md bg-red-400 p-5">

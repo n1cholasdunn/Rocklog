@@ -10,7 +10,7 @@ const PostModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Create your post" />
+      <Heading title="New Post" />
       <CreatePostForm setIsLoading={setIsLoading} />
     </div>
   );

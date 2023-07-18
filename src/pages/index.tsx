@@ -11,7 +11,10 @@ const Home = () => {
         <RegisterModal />
         <PostModal />
       </div>
-      <HomeFeed />
+      <div></div>
+      <div>
+        <HomeFeed />
+      </div>
     </>
   );
 };
